@@ -11,3 +11,9 @@ async def doc_handler(message: Message):
     await message.document.download()
     doc_id = message.document.file_id
     await message.reply("siz hujjat yubordingiz\n"f"file_id = {doc_id}")
+
+@dp.message_handler(content_types=ContentType.VIDEO)
+async def doc_handler(message: Message):
+    await message.video.download()
+    vid_id = message.video.vid_id
+    await message.reply("siz video yubordingiz\n"f"vid_id = {vid_id}")
