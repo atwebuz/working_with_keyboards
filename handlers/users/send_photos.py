@@ -2,6 +2,7 @@ import logging
 from loader import dp, bot
 from aiogram.types import ContentType, Message, InputFile, MediaGroup
 from pathlib import Path
+from keyboards.inline.buy_book import book_keys
 
 
 
@@ -15,14 +16,18 @@ async def photo_handler(message: Message):
     await message.reply("siz rasm yubordingiz\n"f"file_id = {message.photo[-1].file_id}")
 
 # rasmlani yuborish
-@dp.message_handler(commands="kitob")
+@dp.message_handler(commands="internation")
 async def any_handler(message: Message):
-    photo_id = 'AgACAgIAAxkBAAIBOGUhz_1b3jgHTNaMv1NVHvSjwmJnAAIw0DEbSk4QSfF5z1PlPODRAQADAgADeAADMAQ' ## sending image with unique id qachonki magazom boladgan bosa qule boladi
-    photo_url = 'https://telegra.ph//file/b321d373bee43a2c29c0f.jpg' ## sending image with url xotiradan joy omasin dse qule
+    # photo_id = 'AgACAgIAAxkBAAIBOGUhz_1b3jgHTNaMv1NVHvSjwmJnAAIw0DEbSk4QSfF5z1PlPODRAQADAgADeAADMAQ' ## sending image with unique id qachonki magazom boladgan bosa qule boladi
+    photo_url = 'https://api.uznews.uz/storage/uploads/posts/images/18654/inner/X33gfJuWSt.jpg' ## sending image with url xotiradan joy omasin dse qule
     photo_device = InputFile(path_or_bytesio='photos/img.jpg') ## sending image from device
-    await message.reply_photo(photo_device, caption="reply image caption")
-    await message.answer_photo(photo_id, caption="answer image caption")
-    await bot.send_photo(chat_id=message.from_user.id, photo=photo_url, caption="send bot.id")
+    # await message.reply_photo(photo_device, caption="reply image caption")
+    # await message.answer_photo(photo_id, caption="answer image caption")
+    # await bot.send_photo(chat_id=message.from_user.id, photo=photo_url, caption="send bot.id")
+
+    msg = "Ayni paytda Toshkent shahrining eng qulay\nmanzillarida 10 ta yirik filial faoliyat ko‘rsatmoqda va\nular ilg‘or texnologiyalar bilan jihozlangan bo'lib,\ndarslarni yuqori saviyada o‘tkazish uchun eng qulay\nsharoitlarga ega."
+    await message.reply_photo(photo_url, caption=msg, reply_markup=book_keys)
+
 
 ## Sending Album 
 @dp.message_handler(commands="kurslar")
