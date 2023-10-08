@@ -1,18 +1,23 @@
-# Requires "requests" to be installed (see python-requests.org)
 import requests
+from pprint import pprint as print
 
-response = requests.post(
-    'https://api.remove.bg/v1.0/removebg',
-    data={
-        'image_url': 'https://www.remove.bg/example.jpg',
-        'size': 'auto'
-    },
-    headers={'X-Api-Key': 'NNpTPcvAi49WoMZNfMXGF3Ds'},
-)
-if response.status_code == requests.codes.ok:
-    with open('no-bg.png', 'wb') as out:
-        out.write(response.content)
-        print(response.json)
-else:
-    print("Error:", response.status_code, response.text)
 
+region='Toshkent'
+url = f"https://islomapi.uz/api/present/day?region={region}"
+
+# Making our request
+response = requests.get(url)
+data = response.json() 
+
+# Your JSON objectx
+
+try:
+    # print(data['times']['asr'])
+    print(data)
+except ResourceWarning:
+    print("Bu so'rov mavjud emas")
+
+
+
+# https://islomapi.uz/
+		
