@@ -40,7 +40,7 @@ async def send_photo_pic(message: types.Message):
     new_photo = photo_data.get(chat_id)
     
     if new_photo:
-        await message.reply_photo(new_photo, caption='🌉 rasm Background remove')
+        await message.reply_photo(new_photo, caption='🌉 Pic Background remove')
         await message.answer("photo")
     else:
         await message.answer("Rasm topilmadi")
@@ -53,10 +53,10 @@ async def send_photo_doc(message: types.Message):
     new_photo = photo_data.get(chat_id)
     
     if new_photo:
-        await message.reply_document(new_photo, caption='📄 rasm Background remove')
+        await message.reply_document(new_photo, caption='📄 Doc Background remove')
         await message.answer("document")
     else:
-        await message.answer("Rasm topilmadi")
+        await message.answer("Doc topilmadi")
 
 
 

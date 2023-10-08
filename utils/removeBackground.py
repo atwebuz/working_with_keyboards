@@ -12,5 +12,8 @@ headers = {
 async def remove_background(img_url):
     payload = f"image_url={img_url}"
     response = requests.request("POST", url, data=payload, headers=headers)
-    logging.info(response.json()['response']['image_url'])
-    return response.json()['response']['image_url']
+    if response.status_code == requests.codes.ok:
+        logging.info(response.json()['response']['image_url'])
+        return response.json()['response']['image_url']
+    else:
+        return response
