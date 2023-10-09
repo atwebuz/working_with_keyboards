@@ -1,5 +1,6 @@
 from . import help
 from . import start
+from . import shop
 from . import telegraph
 from . import menu_handlers
 # from . import docs_handlers
